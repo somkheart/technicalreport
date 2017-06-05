@@ -65,10 +65,17 @@
         </div>
         <h3 class="font-size-24">เข้าสู่ระบบ</h3>
         <p>ยินดีต้อนรับเข้าสู่ ระบบจัดเก็บรายงานทางวิชาการ</p>
-        <form method="post" action="login-v2.html">
+        <form id="loginform" method="post" action="login-v2.html">
+          <div class="summary-errors alert alert-danger alert-dismissible">
+            <button type="button" class="close" aria-label="Close" data-dismiss="alert">
+            <span aria-hidden="true">×</span>
+            </button>
+            <p>Errors list below: </p>
+            <ul></ul>
+          </div>  
           <div class="form-group">
             <label class="sr-only" for="inputEmail">รหัสเจ้าหน้าที่</label>
-            <input type="email" class="form-control" id="inputEmail" name="email" placeholder="รหัสเจ้าหน้าที่">
+            <input type="text" class="form-control" id="inputUser" name="username" placeholder="รหัสเจ้าหน้าที่">
           </div>
           <div class="form-group">
             <label class="sr-only" for="inputPassword">Password</label>
@@ -82,7 +89,7 @@
             </div>
             <a class="float-right" href="forgot-password.html">Forgot password?</a>
           </div>
-          <button type="submit" class="btn btn-primary btn-block">เข้าสู่ระบบ</button>
+          <button type="submit" id="loginBtn" class="btn btn-primary btn-block">เข้าสู่ระบบ</button>
         </form>
         <!-- <p>No account? <a href="register-v2.html">Sign Up</a></p>--> 
         <footer class="page-copyright">
@@ -121,6 +128,7 @@
   <script src="global/vendor/slidepanel/jquery-slidePanel.js"></script>
   <script src="global/vendor/jquery-placeholder/jquery.placeholder.js"></script>
   <script src="global/vendor/formvalidation/formValidation.min.js"></script>
+  <script src="global/vendor/formvalidation/framework/bootstrap4.min.js"></script>
   <!-- Scripts -->
   <script src="global/js/State.js"></script>
   <script src="global/js/Component.js"></script>
@@ -149,7 +157,92 @@
     var Site = window.Site;
     $(document).ready(function() {
       Site.run();
+    });  
+
+    (function() {
+    $('.summary-errors').hide();
+
+    $('#loginform').formValidation({
+      framework: "bootstrap4",
+      button: {
+        selector: '#loginBtn',
+        disabled: 'disabled'
+      },
+      icon: null,
+      fields: {
+        username: {
+          validators: {
+            notEmpty: {
+              message: 'The username is required and cannot be empty'
+            }
+          }
+        },
+        password: {
+          validators: {
+            notEmpty: {
+              message: 'The password is required and cannot be empty'
+            }
+          }
+        }
+      },
+      err: {
+        clazz: 'text-help'
+      },
+      row: {
+        invalid: 'has-danger'
+      }
+    })
+
+    .on('success.form.fv', function(e) {
+      // Reset the message element when the form is valid
+      $('.summary-errors').html('');
+    })
+
+    .on('err.field.fv', function(e, data) {
+      // data.fv     --> The FormValidation instance
+      // data.field  --> The field name
+      // data.element --> The field element
+      $('.summary-errors').show();
+
+      // Get the messages of field
+      var messages = data.fv.getMessages(data.element);
+
+      // Remove the field messages if they're already available
+      $('.summary-errors').find('li[data-field="' + data.field + '"]').remove();
+
+      // Loop over the messages
+      for (var i in messages) {
+        // Create new 'li' element to show the message
+        $('<li/>')
+          .attr('data-field', data.field)
+          .wrapInner(
+            $('<a/>')
+            .attr('href', 'javascript: void(0);')
+            // .addClass('alert alert-danger alert-dismissible')
+            .html(messages[i])
+            .on('click', function(e) {
+              // Focus on the invalid field
+              data.element.focus();
+            })
+          ).appendTo('.summary-errors > ul');
+      }
+
+      // Hide the default message
+      // $field.data('fv.messages') returns the default element containing the messages
+      data.element
+        .data('fv.messages')
+        .find('.text-help[data-fv-for="' + data.field + '"]')
+        .hide();
+    })
+
+    .on('success.field.fv', function(e, data) {
+      // Remove the field messages
+      $('.summary-errors > ul').find('li[data-field="' + data.field + '"]').remove();
+      if ($('#loginform').data('formValidation').isValid()) {
+        $('.summary-errors').hide();
+      }
     });
+  })();
   })(document, window, jQuery);
   </script>
 </body>
