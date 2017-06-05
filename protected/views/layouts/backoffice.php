@@ -329,7 +329,7 @@
               <a href="javascript:void(0)">
                 <i class="site-menu-icon md-view-compact" aria-hidden="true"></i>
                 <span class="site-menu-title">รออนุมัติ</span>
-                <span class="site-menu-arrow"></span>
+                
               </a>
             </li>
 
@@ -345,7 +345,7 @@
               <a href="javascript:void(0)">
                 <i class="site-menu-icon md-format-color-fill" aria-hidden="true"></i>
                 <span class="site-menu-title">รออนุมัติ</span>
-                <span class="site-menu-arrow"></span>
+      
               </a>
             </li>
             </li>
@@ -354,7 +354,7 @@
               <a href="javascript:void(0)">
                 <i class="site-menu-icon md-apps" aria-hidden="true"></i>
                 <span class="site-menu-title">งานวิจัย</span>
-                <span class="site-menu-arrow"></span>
+               
               </a>
 
               </ul>
