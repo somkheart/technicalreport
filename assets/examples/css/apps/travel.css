@@ -2,8 +2,8 @@
   width: 50%;
   background-color: #f3f7f9;
   -webkit-transition: visibility .1s ease,top .3s ease,left .5s ease,right .5s ease,width .5s;
-       -o-transition: visibility .1s ease,top .3s ease,left .5s ease,right .5s ease,width .5s;
-          transition: visibility .1s ease,top .3s ease,left .5s ease,right .5s ease,width .5s;
+  -o-transition: visibility .1s ease,top .3s ease,left .5s ease,right .5s ease,width .5s;
+  transition: visibility .1s ease,top .3s ease,left .5s ease,right .5s ease,width .5s;
 }
 
 .page-aside-inner {
@@ -12,7 +12,7 @@
 
 .page-aside-switch {
   left: -webkit-calc(100% - 1px);
-  left:         calc(100% - 1px);
+  left: calc(100% - 1px);
 }
 
 .page-nav-tabs {
@@ -26,7 +26,7 @@
 
 .page-aside-content {
   height: -webkit-calc(100% - 44px);
-  height:         calc(100% - 44px);
+  height: calc(100% - 44px);
 }
 
 .page-aside-content .tab-pane {
@@ -34,9 +34,9 @@
 }
 
 .spots-list, .hotels-list {
-  padding-top: 15px;
-  padding-right: 15px;
   margin: 0;
+  padding-right: 15px;
+  padding-top: 15px;
 }
 
 .spots-list .card, .hotels-list .card {
@@ -50,7 +50,7 @@
 }
 
 .spot-info .card-text.type-link a {
-  color: #4caf50;
+  color: #5cd29d;
 }
 
 .spot-info .card-actions .text-active {
@@ -63,7 +63,7 @@
 
 .spot-info .card-actions.active .text-active {
   display: inline-block;
-  color: #d81b60;
+  color: #f96197;
 }
 
 .spot-info .item-title {
@@ -73,7 +73,7 @@
 .spot-info .item-name {
   font-size: 14px;
   font-weight: 300;
-  color: #607d8b;
+  color: #76838f;
 }
 
 .hotel-info .card {
@@ -86,7 +86,7 @@
 
 .reviews-header {
   padding: 10px 30px;
-  border-bottom: 1px solid #b0bec5;
+  border-bottom: 1px solid #e4eaec;
 }
 
 .reviews-header p {
@@ -100,12 +100,12 @@
 }
 
 .reviews-list .review-info {
+  border-bottom: 1px solid #e4eaec;
   cursor: pointer;
-  border-bottom: 1px solid #b0bec5;
 }
 
 .reviews-list .review-info:hover {
-  border-bottom: 1px solid #b0bec5;
+  border-bottom: 1px solid #e4eaec;
 }
 
 .reviews-list .review-info.last-review {
@@ -119,7 +119,7 @@
 .percent {
   margin-right: 5px;
   font-weight: 400;
-  color: #4caf50;
+  color: #5cd29d;
 }
 
 .page-main {
@@ -139,11 +139,11 @@
 .marker-icon {
   position: relative;
   display: inline-block;
-  border: 3px solid #1e88e5;
+  border: 3px solid #62a8ea;
   border-radius: 50%;
   -webkit-transition: .4s ease-in-out all;
-       -o-transition: .4s ease-in-out all;
-          transition: .4s ease-in-out all;
+  -o-transition: .4s ease-in-out all;
+  transition: .4s ease-in-out all;
 }
 
 .marker-icon img {
@@ -153,35 +153,35 @@
 }
 
 .marker-icon::before {
+  content: "";
   position: absolute;
   top: 58px;
   left: 10px;
   z-index: -1;
-  width: 0;
   height: 0;
-  content: "";
-  border-color: #1e88e5 transparent transparent;
-  border-style: solid;
+  width: 0;
   border-width: 17px 21px 0;
+  border-color: #62a8ea transparent transparent;
+  border-style: solid;
   -webkit-transition: .4s ease-in-out all;
-       -o-transition: .4s ease-in-out all;
-          transition: .4s ease-in-out all;
+  -o-transition: .4s ease-in-out all;
+  transition: .4s ease-in-out all;
 }
 
 .marker-icon:hover {
-  border-color: #42a5f5;
+  border-color: #a2caee;
 }
 
 .marker-icon:hover::before {
-  border-color: #42a5f5 transparent transparent;
+  border-color: #a2caee transparent transparent;
 }
 
 .marker-active .marker-icon {
-  border-color: #42a5f5;
+  border-color: #a2caee;
 }
 
 .marker-active .marker-icon::before {
-  border-color: #42a5f5 transparent transparent;
+  border-color: #a2caee transparent transparent;
 }
 
 .marker-cluster-small {
@@ -197,11 +197,11 @@
 }
 
 .detail {
-  background-color: #42a5f5 !important;
+  background-color: #a2caee !important;
 }
 
 .leaflet-popup-pane:hover h3 {
-  color: #42a5f5 !important;
+  color: #a2caee !important;
 }
 
 @media (min-width: 992px) and (max-width: 1599px) {
@@ -221,8 +221,8 @@
     width: 0;
   }
   .page-aside + .page-main {
-    left: 0;
     width: 100%;
+    left: 0;
   }
   .page-aside.open {
     width: 300px;

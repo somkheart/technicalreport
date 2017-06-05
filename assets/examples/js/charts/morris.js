@@ -12,7 +12,6 @@
     Site.run();
   });
 
-
   // Example Morris Line
   // -------------------
   (function() {
@@ -64,7 +63,6 @@
       lineColors: [Config.colors("green", 600), Config.colors("primary", 600)]
     });
   })();
-
 
   // Example Morris Area
   // -------------------
@@ -125,7 +123,6 @@
     });
   })();
 
-
   // Example Morris Bar
   // ------------------
   (function() {
@@ -166,10 +163,9 @@
       numLines: 6,
       gridtextSize: 14,
       resize: true,
-      barColors: [Config.colors("red", 500), Config.colors("grey", 400)]
+      barColors: [Config.colors("red", 500), Config.colors("blue-grey", 300)]
     });
   })();
-
 
   // Example Morris Donut
   // --------------------
@@ -188,8 +184,7 @@
       }, ],
       // barSizeRatio: 0.35,
       resize: true,
-      colors: [Config.colors("red", 500), Config.colors("primary", 500), Config.colors("grey", 400)]
+      colors: [Config.colors("red", 500), Config.colors("primary", 500), Config.colors("blue-grey", 300)]
     });
   })();
-
 })(document, window, jQuery);

@@ -59,7 +59,6 @@ var LocsAv2 = [{
   visible: true
 }];
 
-
 var LocsB = [{
   lat: 52.1,
   lon: 11.3,
@@ -97,7 +96,6 @@ var LocsB = [{
   ].join(''),
   zoom: 6
 }];
-
 
 var LocsBv2 = [{
   lat: 52.1,
@@ -141,9 +139,7 @@ var LocsBv2 = [{
   zoom: 6
 }];
 
-
 var LocsAB = LocsA.concat(LocsB);
-
 
 var LocsC = [{
   lat: 45.4654,

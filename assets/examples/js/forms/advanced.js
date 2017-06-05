@@ -5,7 +5,9 @@
  */
 (function(document, window, $) {
   'use strict';
+
   var Site = window.Site;
+
   $(document).ready(function($) {
     Site.run();
   });
@@ -69,7 +71,6 @@
     });
   })();
 
-
   // Example Tokenfield Events
   // -------------------------
   (function() {
@@ -105,7 +106,6 @@
       })
       .tokenfield();
   })();
-
 
   // Example Tags Input Objects as tags
   // ----------------------------------
@@ -230,7 +230,6 @@
 
   })();
 
-
   // Example AsSpinner
   // -----------------
   (function() {
@@ -243,7 +242,6 @@
 
     $('#inputSpinnerCustomFormat').asSpinner(options);
   })();
-
 
   // Example Multi-Select
   // --------------------
@@ -279,7 +277,6 @@
       return false;
     });
   })();
-
 
   // Example Typeahead
   // -----------------
@@ -380,6 +377,12 @@
       });
     })();
 
-
   })();
+
+  // (function() {
+  //   $("#irs_6").ionRangeSlider({
+  //     values: ["zero","one","two","three","four","five","six","seven","eight","nine","ten"]
+  //   })
+  // })();
+
 })(document, window, jQuery);

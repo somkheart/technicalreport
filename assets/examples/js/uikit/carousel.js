@@ -15,7 +15,6 @@
     // -------------------------
     $('#exampleSingleItem').slick();
 
-
     // Example Slick Multiple Items
     // ----------------------------
     $('#exampleMultipleItems').slick({
@@ -80,11 +79,9 @@
       adaptiveHeight: true
     });
 
-
     // Example Slick Data Attribute Settings
     // -----------------------------
     $('#exampleData').slick();
-
 
     // Example Slick Center Mode
     // -------------------------
@@ -120,7 +117,6 @@
       slidesToScroll: 1
     });
 
-
     // Example Slick Autoplay
     // ----------------------
     $('#exampleAutoplay').slick({
@@ -144,7 +140,6 @@
       cssEase: 'linear'
     });
 
-
     // Example Slick Add & Remove
     // --------------------------
     var slideIndex = 1;
@@ -167,7 +162,6 @@
       }
     });
 
-
     // Example Slick Filtering
     // -----------------------
     $('#exampleFiltering').slick({
@@ -189,5 +183,4 @@
     });
 
   });
-
 })(document, window, jQuery);

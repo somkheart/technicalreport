@@ -4,7 +4,6 @@
  * Licensed under the Themeforest Standard Licenses
  */
 (function(document, window, $) {
-
   'use strict';
 
   var Site = window.Site;
@@ -21,7 +20,6 @@
       responsive: true
     });
   })();
-
 
   // Example Cropper Full
   // --------------------

@@ -19,6 +19,7 @@
       $('.example-loading .loader').removeClass('loader-' + curr).addClass('loader-' + type).data('type', type);
 
     });
+
     // Example NProgress
     // -----------------
     (function() {
@@ -132,5 +133,4 @@
       });
     })();
   });
-
 })(document, window, jQuery);

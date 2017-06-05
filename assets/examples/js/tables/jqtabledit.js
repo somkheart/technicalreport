@@ -16,7 +16,6 @@
   // -------------------------------
   (function() {
     $('#exampleTableditToolbars').Tabledit({
-      groupClass: 'btn-group btn-group-flat btn-group-sm',
       columns: {
         identifier: [0, 'id'],
         editable: [
@@ -28,12 +27,12 @@
       buttons: {
         edit: {
           class: 'btn btn-sm btn-icon btn-flat btn-default',
-          html: '<span class="icon md-wrench"></span>',
+          html: '<span class="icon wb-wrench"></span>',
           action: 'edit'
         },
         delete: {
           class: 'btn btn-sm btn-icon btn-flat btn-default',
-          html: '<span class="icon md-close"></span>',
+          html: '<span class="icon wb-close"></span>',
           action: 'delete'
         }
       }
@@ -44,7 +43,6 @@
   // -------------------------------
   (function() {
     $('#exampleTableditInlineEdit').Tabledit({
-      groupClass: 'btn-group btn-group-flat btn-group-sm',
       eventType: 'dblclick',
       editButton: false,
       columns: {
@@ -57,12 +55,12 @@
       buttons: {
         edit: {
           class: 'btn btn-sm btn-icon btn-flat btn-default',
-          html: '<span class="icon md-wrench"></span>',
+          html: '<span class="icon wb-wrench"></span>',
           action: 'edit'
         },
         delete: {
           class: 'btn btn-sm btn-icon btn-flat btn-default',
-          html: '<span class="icon md-close"></span>',
+          html: '<span class="icon wb-close"></span>',
           action: 'delete'
         }
       }
@@ -73,7 +71,6 @@
   // -------------------------------
   (function() {
     $('#InlineEditWithoutIndentify').Tabledit({
-      groupClass: 'btn-group btn-group-flat btn-group-sm',
       editButton: false,
       deleteButton: false,
       hideIdentifier: true,
@@ -87,12 +84,12 @@
       buttons: {
         edit: {
           class: 'btn btn-sm btn-icon btn-flat btn-default',
-          html: '<span class="icon md-wrench"></span>',
+          html: '<span class="icon wb-wrench"></span>',
           action: 'edit'
         },
         delete: {
           class: 'btn btn-sm btn-icon btn-flat btn-default',
-          html: '<span class="icon md-close"></span>',
+          html: '<span class="icon wb-close"></span>',
           action: 'delete'
         }
       }
@@ -103,7 +100,6 @@
   // -------------------------------
   (function() {
     $('#tableditWithEditButtonOnly').Tabledit({
-      groupClass: 'btn-group btn-group-flat btn-group-sm',
       deleteButton: false,
       saveButton: false,
       autoFocus: false,
@@ -117,12 +113,12 @@
       buttons: {
         edit: {
           class: 'btn btn-sm btn-icon btn-flat btn-default',
-          html: '<span class="icon md-wrench"></span>',
+          html: '<span class="icon wb-wrench"></span>',
           action: 'edit'
         },
         delete: {
           class: 'btn btn-sm btn-icon btn-flat btn-default',
-          html: '<span class="icon md-close"></span>',
+          html: '<span class="icon wb-close"></span>',
           action: 'delete'
         }
       }
@@ -133,7 +129,6 @@
   // -------------------------------
   (function() {
     $('#tableditWithDeleteButtonOnly').Tabledit({
-      groupClass: 'btn-group btn-group-flat btn-group-sm',
       rowIdentifier: 'data-id',
       editButton: false,
       restoreButton: false,
@@ -148,12 +143,12 @@
       buttons: {
         edit: {
           class: 'btn btn-sm btn-icon btn-flat btn-default',
-          html: '<span class="icon md-wrench"></span>',
+          html: '<span class="icon wb-wrench"></span>',
           action: 'edit'
         },
         delete: {
           class: 'btn btn-sm btn-icon btn-flat btn-default',
-          html: '<span class="icon md-close"></span>',
+          html: '<span class="icon wb-close"></span>',
           action: 'delete'
         },
         confirm: {
@@ -168,7 +163,6 @@
   // -------------------------------
   (function() {
     $('#tableditLogAllHooks').Tabledit({
-      groupClass: 'btn-group btn-group-flat btn-group-sm',
       rowIdentifier: 'data-id',
       editButton: true,
       restoreButton: true,
@@ -183,12 +177,12 @@
       buttons: {
         edit: {
           class: 'btn btn-sm btn-icon btn-flat btn-default',
-          html: '<span class="icon md-wrench"></span>',
+          html: '<span class="icon wb-wrench"></span>',
           action: 'edit'
         },
         delete: {
           class: 'btn btn-sm btn-icon btn-flat btn-default',
-          html: '<span class="icon md-close"></span>',
+          html: '<span class="icon wb-close"></span>',
           action: 'delete'
         }
       },
@@ -217,5 +211,4 @@
       }
     });
   })();
-
 })(document, window, jQuery);

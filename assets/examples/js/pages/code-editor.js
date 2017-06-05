@@ -179,5 +179,4 @@
   $("#filesTree").contextmenu({
     target: "#filesContextMenu"
   });
-
 })(document, window, jQuery);

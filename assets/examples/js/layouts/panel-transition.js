@@ -23,5 +23,4 @@
       $(this).parent().hide();
     });
   });
-
 })(document, window, jQuery);

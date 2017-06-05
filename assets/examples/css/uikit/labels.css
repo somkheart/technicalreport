@@ -1,6 +1,5 @@
 .example > span {
-  margin-right: 16px;
-  margin-bottom: 5px;
+  margin: 0 16px 8px 0;
 }
 
 .example-2 > span {

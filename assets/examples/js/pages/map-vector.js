@@ -5,6 +5,7 @@
  */
 (function(document, window, $) {
   'use strict';
+
   var Site = window.Site;
 
   $(document).ready(function() {
@@ -29,5 +30,4 @@
 
     $('#world-map').vectorMap(options);
   });
-
 })(document, window, jQuery);

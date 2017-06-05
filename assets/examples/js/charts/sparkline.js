@@ -51,7 +51,7 @@
     height: '162px',
     barWidth: 10,
     barSpacing: 5,
-    barColor: Config.colors("grey", 400)
+    barColor: Config.colors("blue-grey", 300)
   });
 
   $('.sparkline-compositebar-chart').sparkline([4, 5, 6, 6, 5, 5, 3, 6, 4, 2], {
@@ -65,7 +65,6 @@
     fillColor: false,
     lineColor: Config.colors("red", 400)
   });
-
 
   // Sparkline Types
   // ---------------
@@ -122,7 +121,7 @@
     spotColor: Config.colors("primary", 500),
     minSpotColor: Config.colors("primary", 500),
     maxSpotColor: Config.colors("primary", 500),
-    normalRangeColor: Config.colors("grey", 300),
+    normalRangeColor: Config.colors("blue-grey", 300),
     normalRangeMin: -1,
     normalRangeMax: 8
   });
@@ -173,7 +172,7 @@
     height: '32px',
     width: '150px',
     lineColor: Config.colors("red", 400),
-    fillColor: Config.colors("grey", 300),
+    fillColor: Config.colors("blue-grey", 300),
     minSpotColor: false,
     maxSpotColor: false,
     spotColor: Config.colors("green", 500),
@@ -187,7 +186,7 @@
     barWidth: 10,
     barSpacing: 5,
     posBarColor: Config.colors("primary", 500),
-    negBarColor: Config.colors("grey", 400),
+    negBarColor: Config.colors("blue-grey", 300),
     zeroBarColor: Config.colors("red", 500)
   });
 
@@ -197,12 +196,12 @@
     barWidth: 10,
     barSpacing: 5,
     posBarColor: Config.colors("primary", 500),
-    negBarColor: Config.colors("grey", 400),
+    negBarColor: Config.colors("blue-grey", 300),
     zeroBarColor: Config.colors("red", 500),
     colorMap: {
       '-4': Config.colors("red", 700),
       '-2': Config.colors("primary", 600),
-      '2': Config.colors("grey", 500)
+      '2': Config.colors("blue-grey", 400)
     }
   });
 
@@ -214,8 +213,8 @@
     lineColor: Config.colors("primary", 700),
     boxLineColor: Config.colors("primary", 400),
     boxFillColor: Config.colors("primary", 400),
-    whiskerColor: Config.colors("grey", 600),
-    // outlierLineColor: Config.colors("grey", 400),
+    whiskerColor: Config.colors("blue-grey", 500),
+    // outlierLineColor: Config.colors("blue-grey", 300),
     // outlierFillColor: false,
     medianColor: Config.colors("red", 500)
       // targetColor: Config.colors("green", 500)
@@ -232,9 +231,9 @@
     lineColor: Config.colors("primary", 700),
     boxLineColor: Config.colors("primary", 400),
     boxFillColor: Config.colors("primary", 400),
-    whiskerColor: Config.colors("grey", 600),
-    outlierLineColor: Config.colors("grey", 400),
-    outlierFillColor: Config.colors("grey", 200),
+    whiskerColor: Config.colors("blue-grey", 500),
+    outlierLineColor: Config.colors("blue-grey", 300),
+    outlierFillColor: Config.colors("blue-grey", 100),
     medianColor: Config.colors("red", 500),
     targetColor: Config.colors("green", 500)
   });
@@ -249,7 +248,6 @@
   $('.sparkline-pie-1').sparkline('html', {
     type: 'pie',
     height: '30px',
-    sliceColors: [Config.colors("primary", 500), Config.colors("grey", 400)]
+    sliceColors: [Config.colors("primary", 500), Config.colors("blue-grey", 300)]
   });
-
 })(document, window, jQuery);

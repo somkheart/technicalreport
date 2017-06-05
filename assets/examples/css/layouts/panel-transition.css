@@ -1,5 +1,5 @@
 .page-header {
-  z-index: 100;
+  z-index: 1100;
 }
 
 #exampleTransition .panel {
@@ -7,8 +7,7 @@
 }
 
 @media (max-width: 479px) {
-  .page-content .blocks li,
-  .page-content [class*=blocks-] li {
+  .page-content .blocks li, .page-content [class*=blocks-] li {
     width: 100%;
   }
 }

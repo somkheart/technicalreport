@@ -32,11 +32,11 @@ function scoreSorter(a, b) {
 }
 
 function nameFormatter(value) {
-  return value + '<i class="icon md-book" aria-hidden="true"></i> ';
+  return value + '<i class="icon wb-book" aria-hidden="true"></i> ';
 }
 
 function starsFormatter(value) {
-  return '<i class="icon md-star" aria-hidden="true"></i> ' + value;
+  return '<i class="icon wb-star" aria-hidden="true"></i> ' + value;
 }
 
 function queryParams() {
@@ -70,10 +70,9 @@ function buildTable($el, cells, rows) {
   $el.bootstrapTable('destroy').bootstrapTable({
     columns: columns,
     data: data,
-    iconsPrefix: 'icon',
-    iconSize: 'icon',
+    iconSize: 'outline',
     icons: {
-      columns: 'md-view-list-alt'
+      columns: 'wb-list-bulleted'
     }
   });
 }
@@ -127,7 +126,6 @@ function buildTable($el, cells, rows) {
       "Score": "87"
     }];
 
-
     $('#exampleTableFromData').bootstrapTable({
       data: bt_data,
       // mobileResponsive: true,
@@ -141,22 +139,19 @@ function buildTable($el, cells, rows) {
     $('#exampleTableColumns').bootstrapTable({
       url: "../../assets/data/bootstrap_table_test.json",
       height: "400",
+      iconSize: 'outline',
       showColumns: true,
-      iconsPrefix: 'icon',
-      iconSize: 'icon',
       icons: {
-        refresh: 'md-refresh',
-        toggle: 'md-receipt',
-        columns: 'md-view-list-alt'
+        refresh: 'wb-refresh',
+        toggle: 'wb-order',
+        columns: 'wb-list-bulleted'
       }
     });
   })();
 
-
   // Example Bootstrap Table Large Columns
   // -------------------------------------
   buildTable($('#exampleTableLargeColumns'), 50, 50);
-
 
   // Example Bootstrap Table Toolbar
   // -------------------------------
@@ -168,16 +163,14 @@ function buildTable($el, cells, rows) {
       showToggle: true,
       showColumns: true,
       toolbar: '#exampleToolbar',
-      iconsPrefix: 'icon',
-      iconSize: 'icon',
+      iconSize: 'outline',
       icons: {
-        refresh: 'md-refresh',
-        toggle: 'md-receipt',
-        columns: 'md-view-list-alt'
+        refresh: 'wb-refresh',
+        toggle: 'wb-order',
+        columns: 'wb-list-bulleted'
       }
     });
   })();
-
 
   // Example Bootstrap Table Events
   // ------------------------------
@@ -189,12 +182,12 @@ function buildTable($el, cells, rows) {
       showRefresh: true,
       showToggle: true,
       showColumns: true,
+      iconSize: 'outline',
       toolbar: '#exampleTableEventsToolbar',
-      iconsPrefix: 'icon',
       icons: {
-        refresh: 'md-refresh',
-        toggle: 'md-receipt',
-        columns: 'md-view-list-alt'
+        refresh: 'wb-refresh',
+        toggle: 'wb-order',
+        columns: 'wb-list-bulleted'
       }
     });
 

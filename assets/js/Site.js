@@ -1,16 +1,16 @@
 (function (global, factory) {
   if (typeof define === "function" && define.amd) {
-    define('/Site', ['exports', 'jquery', 'Base', 'Menubar', 'Sidebar', 'PageAside'], factory);
+    define('/Site', ['exports', 'jquery', 'Config', 'Base', 'Menubar', 'GridMenu', 'Sidebar', 'PageAside'], factory);
   } else if (typeof exports !== "undefined") {
-    factory(exports, require('jquery'), require('Base'), require('Menubar'), require('Sidebar'), require('PageAside'));
+    factory(exports, require('jquery'), require('Config'), require('Base'), require('Menubar'), require('GridMenu'), require('Sidebar'), require('PageAside'));
   } else {
     var mod = {
       exports: {}
     };
-    factory(mod.exports, global.jQuery, global.Base, global.SectionMenubar, global.SectionSidebar, global.SectionPageAside);
+    factory(mod.exports, global.jQuery, global.Config, global.Base, global.SectionMenubar, global.SectionGridMenu, global.SectionSidebar, global.SectionPageAside);
     global.Site = mod.exports;
   }
-})(this, function (exports, _jquery, _Base2, _Menubar, _Sidebar, _PageAside) {
+})(this, function (exports, _jquery, _Config, _Base2, _Menubar, _GridMenu, _Sidebar, _PageAside) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {
@@ -20,9 +20,13 @@
 
   var _jquery2 = babelHelpers.interopRequireDefault(_jquery);
 
+  var Config = babelHelpers.interopRequireWildcard(_Config);
+
   var _Base3 = babelHelpers.interopRequireDefault(_Base2);
 
   var _Menubar2 = babelHelpers.interopRequireDefault(_Menubar);
+
+  var _GridMenu2 = babelHelpers.interopRequireDefault(_GridMenu);
 
   var _Sidebar2 = babelHelpers.interopRequireDefault(_Sidebar);
 
@@ -54,9 +58,10 @@
         this.initBootstrap();
 
         this.setupMenubar();
+        this.setupGridMenu();
         this.setupFullScreen();
         this.setupMegaNavbar();
-        this.setupWave();
+        this.setupTour();
         this.setupNavbarCollpase();
         // Dropdown menu setup
         // ===================
@@ -67,15 +72,39 @@
     }, {
       key: '_getDefaultMeunbarType',
       value: function _getDefaultMeunbarType() {
-        return 'hide';
+        var breakpoint = this.getCurrentBreakpoint(),
+            type = false;
+
+        if ($BODY.data('autoMenubar') === false || $BODY.is('.site-menubar-keep')) {
+          if ($BODY.hasClass('site-menubar-fold')) {
+            type = 'fold';
+          } else if ($BODY.hasClass('site-menubar-unfold')) {
+            type = 'unfold';
+          }
+        }
+
+        switch (breakpoint) {
+          case 'lg':
+            type = type || 'unfold';
+            break;
+          case 'md':
+          case 'sm':
+            type = type || 'fold';
+            break;
+          case 'xs':
+            type = 'hide';
+            break;
+          // no default
+        }
+        return type;
       }
     }, {
       key: 'getDefaultState',
       value: function getDefaultState() {
         var menubarType = this._getDefaultMeunbarType();
-
         return {
-          menubarType: menubarType
+          menubarType: menubarType,
+          gridmenu: false
         };
       }
     }, {
@@ -83,14 +112,19 @@
       value: function getDefaultActions() {
         return {
           menubarType: function menubarType(type) {
+            var toggle = function toggle($el) {
+              $el.toggleClass('hided', !(type === 'open'));
+              $el.toggleClass('unfolded', !(type === 'fold'));
+            };
+
             (0, _jquery2.default)('[data-toggle="menubar"]').each(function () {
               var $this = (0, _jquery2.default)(this);
               var $hamburger = (0, _jquery2.default)(this).find('.hamburger');
 
               if ($hamburger.length > 0) {
-                $hamburger.toggleClass('hided', !(type === 'open'));
+                toggle($hamburger);
               } else {
-                $this.toggleClass('hided', !(type === 'open'));
+                toggle($this);
               }
             });
           }
@@ -99,12 +133,14 @@
     }, {
       key: 'getDefaultChildren',
       value: function getDefaultChildren() {
-        this.menubar = new _Menubar2.default({
+        var menubar = new _Menubar2.default({
           $el: (0, _jquery2.default)('.site-menubar')
         });
-
-        this.sidebar = new _Sidebar2.default();
-        var children = [this.menubar, this.sidebar];
+        var gridmenu = new _GridMenu2.default({
+          $el: (0, _jquery2.default)('.site-gridmenu')
+        });
+        var sidebar = new _Sidebar2.default();
+        var children = [menubar, gridmenu, sidebar];
         var $aside = (0, _jquery2.default)('.page-aside');
         if ($aside.length > 0) {
           children.push(new _PageAside2.default({
@@ -161,6 +197,23 @@
         }
       }
     }, {
+      key: 'setupGridMenu',
+      value: function setupGridMenu() {
+        var self = this;
+        $DOC.on('click', '[data-toggle="gridmenu"]', function () {
+          var $this = (0, _jquery2.default)(this),
+              isOpened = self.getState('gridmenu');
+
+          if (isOpened) {
+            $this.addClass('active').attr('aria-expanded', true);
+          } else {
+            $this.removeClass('active').attr('aria-expanded', false);
+          }
+
+          self.setState('gridmenu', !isOpened);
+        });
+      }
+    }, {
       key: 'setupMegaNavbar',
       value: function setupMegaNavbar() {
         $DOC.on('click', '.navbar-mega .dropdown-menu', function (e) {
@@ -180,7 +233,6 @@
           }
         }).on('shown.bs.dropdown', function (e) {
           var $menu = (0, _jquery2.default)(e.target).find('.dropdown-menu-media > .list-group');
-
           if ($menu.length > 0) {
             var api = $menu.data('asScrollable');
             if (api) {
@@ -193,6 +245,37 @@
               });
             }
           }
+        });
+      }
+    }, {
+      key: 'setupMenubar',
+      value: function setupMenubar() {
+        var _this2 = this;
+
+        (0, _jquery2.default)(document).on('click', '[data-toggle="menubar"]', function () {
+          var type = _this2.getState('menubarType');
+          switch (type) {
+            case 'fold':
+              type = 'unfold';
+              break;
+            case 'unfold':
+              type = 'fold';
+              break;
+            case 'open':
+              type = 'hide';
+              break;
+            case 'hide':
+              type = 'open';
+              break;
+            // no default
+          }
+
+          _this2.setState('menubarType', type);
+          return false;
+        });
+
+        Breakpoints.on('change', function () {
+          _this2.setState('menubarType', _this2._getDefaultMeunbarType());
         });
       }
     }, {
@@ -209,50 +292,6 @@
         });
       }
     }, {
-      key: 'setupMenubar',
-      value: function setupMenubar() {
-        var _this2 = this;
-
-        (0, _jquery2.default)(document).on('click', '[data-toggle="menubar"]', function () {
-          var type = _this2.getState('menubarType');
-          switch (type) {
-            case 'open':
-              type = 'hide';
-              break;
-            case 'hide':
-              type = 'open';
-              break;
-            // no default
-          }
-
-          _this2.setState('menubarType', type);
-
-          return false;
-        });
-
-        (0, _jquery2.default)(document).on('collapsed.site.menu expanded.site.menu', function () {
-          var type = _this2.getState('menubarType');
-
-          if (type === 'open' && _this2.menubar && _this2.menubar.scrollable) {
-            _this2.menubar.scrollable.update();
-          }
-        });
-
-        Breakpoints.on('change', function () {
-          _this2.setState('menubarType', _this2._getDefaultMeunbarType());
-        });
-      }
-    }, {
-      key: 'setupWave',
-      value: function setupWave() {
-        if (typeof Waves !== 'undefined') {
-          Waves.init();
-          Waves.attach('.site-menu-item > a', ['waves-classic']);
-          Waves.attach(".site-navbar .navbar-toolbar a", ["waves-light", "waves-round"]);
-          Waves.attach('.btn');
-        }
-      }
-    }, {
       key: 'startLoading',
       value: function startLoading() {
         if (typeof _jquery2.default.fn.animsition === 'undefined') {
@@ -260,15 +299,63 @@
         }
 
         // let loadingType = 'default';
+        var assets = Config.get('assets');
         $BODY.animsition({
           inClass: 'fade-in',
+          outClass: 'fade-out',
           inDuration: 800,
+          outDuration: 500,
           loading: true,
           loadingClass: 'loader-overlay',
           loadingParentElement: 'html',
           loadingInner: '\n      <div class="loader-content">\n        <div class="loader-index">\n          <div></div>\n          <div></div>\n          <div></div>\n          <div></div>\n          <div></div>\n          <div></div>\n        </div>\n      </div>',
           onLoadEvent: true
         });
+      }
+    }, {
+      key: 'setupTour',
+      value: function setupTour(flag) {
+        var _this3 = this;
+
+        if (typeof this.tour === 'undefined') {
+          var _ret2 = function () {
+            if (typeof introJs === 'undefined') {
+              return {
+                v: void 0
+              };
+            }
+            var overflow = (0, _jquery2.default)('body').css('overflow'),
+                self = _this3,
+                tourOptions = Config.get('tour');
+
+            _this3.tour = introJs();
+
+            _this3.tour.onbeforechange(function () {
+              (0, _jquery2.default)('body').css('overflow', 'hidden');
+            });
+
+            _this3.tour.oncomplete(function () {
+              (0, _jquery2.default)('body').css('overflow', overflow);
+            });
+
+            _this3.tour.onexit(function () {
+              (0, _jquery2.default)('body').css('overflow', overflow);
+            });
+
+            _this3.tour.setOptions(tourOptions);
+            (0, _jquery2.default)('.site-tour-trigger').on('click', function () {
+              self.tour.start();
+            });
+          }();
+
+          if ((typeof _ret2 === 'undefined' ? 'undefined' : babelHelpers.typeof(_ret2)) === "object") return _ret2.v;
+        }
+        // if (window.localStorage && window.localStorage.getItem('startTour') && (flag !== true)) {
+        //   return;
+        // } else {
+        //   this.tour.start();
+        //   window.localStorage.setItem('startTour', true);
+        // }
       }
     }]);
     return Site;

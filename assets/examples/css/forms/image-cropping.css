@@ -1,7 +1,4 @@
-.btn-group .btn + .btn,
-.btn-group .btn + .btn-group,
-.btn-group .btn-group + .btn,
-.btn-group .btn-group + .btn-group {
+.btn-group .btn + .btn, .btn-group .btn + .btn-group, .btn-group .btn-group + .btn, .btn-group .btn-group + .btn-group {
   margin-left: 0;
 }
 
@@ -40,8 +37,7 @@
   margin-right: 0;
 }
 
-.cropper,
-.cropper-toolbar {
+.cropper, .cropper-toolbar {
   margin-bottom: 30px;
 }
 

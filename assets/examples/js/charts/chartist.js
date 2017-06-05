@@ -12,7 +12,6 @@
     Site.run();
   });
 
-
   // Example Chartist Css Animation
   // ------------------------------
   (function() {
@@ -46,7 +45,6 @@
     new Chartist.Line('#exampleLineAnimation', cssAnimationData, null, cssAnimationResponsiveOptions);
   })();
 
-
   // Example Chartist Simple Line
   // ----------------------------
   (function() {
@@ -64,7 +62,6 @@
       }
     });
   })();
-
 
   // Example Chartist Line Scatter
   // -----------------------------
@@ -333,8 +330,7 @@
     });
   })();
 
-
-  // Example Chartist Line Interpolation 
+  // Example Chartist Line Interpolation
   // -----------------------------------
   (function() {
     var smoothingChart = new Chartist.Line('#exampleSmoothingLine', {
@@ -444,7 +440,6 @@
     });
   })();
 
-
   // Example Chartist Multi-Line Labels
   // ----------------------------------
   (function() {
@@ -469,7 +464,6 @@
       }
     });
   })();
-
 
   // Example Chartist Stacked Bar Chart
   // ----------------------------------
@@ -497,7 +491,6 @@
     });
   })();
 
-
   // Example Chartist Horizontal Bar
   // -------------------------------
   (function() {
@@ -517,8 +510,7 @@
     });
   })();
 
-
-  // Example Chartist Extreme Responsive 
+  // Example Chartist Extreme Responsive
   // -----------------------------------
   (function() {
     new Chartist.Bar('#exampleResponsiveBar', {
@@ -569,7 +561,6 @@
     ]);
   })();
 
-
   // Example Chartist Simple Pie
   // ---------------------------
   (function() {
@@ -587,7 +578,6 @@
       }
     });
   })();
-
 
   // Example Chartist Pie Chart Labels
   // ---------------------------------
@@ -621,7 +611,6 @@
     new Chartist.Pie('#exampleLabelsPie', labelsPieData, labelsPieOptions, labelsPieResponsiveOptions);
   })();
 
-
   // Example Chartist Gauge Pie
   // --------------------------
   (function() {
@@ -635,5 +624,4 @@
       showLabel: false
     });
   })();
-
 })(document, window, jQuery);

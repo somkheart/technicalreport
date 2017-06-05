@@ -9,9 +9,9 @@
   if (!window.localStorage) {
     return null;
   }
-  var layout = 'topbar';
-  // var levelPaht = layout;
-  var settingsName = 'remark.material.' + layout + '.skinTools';
+  var layout = 'base';
+  var levelPaht = layout;
+  var settingsName = 'remark.' + layout + '.skinTools';
   var settings = localStorage.getItem(settingsName);
 
   function getLevel(url, tag) {
@@ -61,8 +61,8 @@
       var navbar = document.getElementsByClassName('site-navbar');
       if (navbar.length > 0) {
         clearInterval(navbarFn);
-        if (settings.navbar && settings.navbar !== 'primary') {
-          navbar[0].className += " bg-" + settings.navbar + "-600";
+        if (settings['navbar'] && settings['navbar'] !== 'primary') {
+          navbar[0].className += " bg-" + settings['navbar'] + "-600";
         }
         if (settings['navbarInverse'] && settings['navbarInverse'] !== 'false') {
           navbar[0].className += " navbar-inverse";
@@ -74,9 +74,9 @@
 
   if (document.addEventListener) {
     document.addEventListener("DOMContentLoaded", function() {
-      var $body = $(document.body);
-      // $doc = $(document),
-      // $win = $(window);
+      var $body = $(document.body),
+        $doc = $(document),
+        $win = $(window);
 
       var Storage = {
         set: function(key, value) {
@@ -115,34 +115,34 @@
         tpl: '<div class="site-skintools">' +
           '<div class="site-skintools-inner">' +
           '<div class="site-skintools-toggle">' +
-          '<i class="icon md-settings primary-600"></i>' +
+          '<i class="icon wb-settings primary-600"></i>' +
           '</div>' +
           '<div class="site-skintools-content">' +
           '<div class="nav-tabs-horizontal">' +
           '<ul role="tablist" class="nav nav-tabs nav-tabs-line">' +
-          '<li class="nav-item"><a class="nav-link active" role="tab" aria-controls="skintoolsSidebar" href="#skintoolsSidebar" data-toggle="tab" aria-expanded="true">Sidebar</a></li>' +
-          '<li class="nav-item"><a class="nav-link" role="tab" aria-controls="skintoolsNavbar" href="#skintoolsNavbar" data-toggle="tab" aria-expanded="false">Navbar</a></li>' +
-          '<li class="nav-item"><a class="nav-link" role="tab" aria-controls="skintoolsPrimary" href="#skintoolsPrimary" data-toggle="tab" aria-expanded="false">Primary</a></li>' +
+          '<li role="presentation" class="nav-item"><a class="nav-link active" role="tab" aria-controls="skintoolsSidebar" href="#skintoolsSidebar" data-toggle="tab" aria-expanded="true">Sidebar</a></li>' +
+          '<li class="nav-item" role="presentation"><a class="nav-link" role="tab" aria-controls="skintoolsNavbar" href="#skintoolsNavbar" data-toggle="tab" aria-expanded="false">Navbar</a></li>' +
+          '<li class="nav-item" role="presentation"><a class="nav-link" role="tab" aria-controls="skintoolsPrimary" href="#skintoolsPrimary" data-toggle="tab" aria-expanded="false">Primary</a></li>' +
           '</ul>' +
           '<div class="tab-content">' +
           '<div role="tabpanel" id="skintoolsSidebar" class="tab-pane active"></div>' +
           '<div role="tabpanel" id="skintoolsNavbar" class="tab-pane"></div>' +
           '<div role="tabpanel" id="skintoolsPrimary" class="tab-pane"></div>' +
-          '<button class="btn btn-block btn-primary margin-top-20" id="skintoolsReset" type="button">Reset</button>' +
+          '<button class="btn btn-outline btn-block btn-primary mt-20" id="skintoolsReset" type="button">Reset</button>' +
           '</div>' +
           '</div>' +
           '</div>' +
           '</div>' +
           '</div>',
         skintoolsSidebar: ['dark', 'light'],
-        skintoolsNavbar: ['primary', 'blue', 'brown', 'cyan', 'green', 'grey', 'orange', 'pink', 'purple', 'red', 'teal', 'yellow'],
-        navbarSkins: 'bg-primary-600 bg-blue-600 bg-brown-600 bg-cyan-600 bg-green-600 bg-grey-600 bg-orange-600 bg-pink-600 bg-purple-600 bg-red-600 bg-teal-600 bg-yellow-700',
-        skintoolsPrimary: ['primary', 'blue', 'brown', 'cyan', 'green', 'grey', 'orange', 'pink', 'purple', 'red', 'teal', 'yellow'],
+        skintoolsNavbar: ['primary', 'brown', 'cyan', 'green', 'grey', 'indigo', 'orange', 'pink', 'purple', 'red', 'teal', 'yellow'],
+        navbarSkins: 'bg-primary-600 bg-brown-600 bg-cyan-600 bg-green-600 bg-grey-600 bg-indigo-600 bg-orange-600 bg-pink-600 bg-purple-600 bg-red-600 bg-teal-600 bg-yellow-700',
+        skintoolsPrimary: ['primary', 'brown', 'cyan', 'green', 'grey', 'indigo', 'orange', 'pink', 'purple', 'red', 'teal', 'yellow'],
         storageKey: settingsName,
         defaultSettings: {
-          'sidebar': 'light',
+          'sidebar': 'dark',
           'navbar': 'primary',
-          'navbarInverse': 'true',
+          'navbarInverse': 'false',
           'primary': 'primary'
         },
         init: function() {
@@ -213,7 +213,7 @@
                   self.navbarImprove(v);
                   break;
                 case 'navbarInverse':
-                  var flag = (v === 'false' ? false : true);
+                  var flag = v === 'false' ? false : true;
                   $('input[value="inverse"]', self.$navbar).prop('checked', flag);
                   self.navbarImprove('inverse', flag);
                   break;
@@ -275,34 +275,26 @@
           this.updateSetting('primary', val);
         },
         sidebarImprove: function(val) {
-          this.$siteSidebar.removeClass('site-menubar-light');
-
-          if (val === 'light') {
+          if (val === 'dark') {
+            this.$siteSidebar.removeClass('site-menubar-light');
+          } else if (val === 'light') {
             this.$siteSidebar.addClass('site-menubar-' + val);
           }
         },
         navbarImprove: function(val, checked) {
-          var change = function($nav, value) {
-            var bg = 'bg-' + value + '-600'
-            if (value === 'yellow') {
-              bg = 'bg-yellow-700';
-            }
-            if (value === 'primary') {
-              bg = '';
-            }
-            $nav.addClass(bg);
-          };
-
           if (val === 'inverse') {
             checked ? this.$siteNavbar.addClass('navbar-inverse') : this.$siteNavbar.removeClass('navbar-inverse');
-
-            checked ? change(this.$siteNavbar, this.settings.navbar) : this.$siteNavbar.removeClass(this.navbarSkins);
           } else {
-            this.$siteNavbar.removeClass(this.navbarSkins);
 
-            if (this.settings.navbarInverse === 'true') {
-              change(this.$siteNavbar, val);
+            var bg = 'bg-' + val + '-600'
+            if (val === 'yellow') {
+              bg = 'bg-yellow-700';
             }
+            if (val === 'primary') {
+              bg = '';
+            }
+
+            this.$siteNavbar.removeClass(this.navbarSkins).addClass(bg);
           }
         },
         primaryImprove: function(val) {

@@ -12,7 +12,6 @@
     Site.run();
   });
 
-
   // Example Scrollable Dynamic Content
   // ----------------------------------
   (function() {
@@ -28,7 +27,6 @@
       $('#exampleDynamic').asScrollable("update");
     });
   })();
-
 
   // Example Scrollable Api Access
   // -----------------------------
@@ -48,5 +46,4 @@
       $('#exampleScollableApi').asScrollable('scrollBy', 'vertical', to);
     });
   })();
-
 })(document, window, jQuery);

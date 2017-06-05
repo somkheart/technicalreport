@@ -6,7 +6,6 @@
 (function(document, window, $) {
   'use strict';
 
-
   $(document).ready(function($) {
     Site.run();
 
@@ -18,6 +17,7 @@
         $('.panel .icon').css('font-size', value);
       }
     });
+
     $('.input-search input[type=text]').on('keyup', function() {
       var val = $(this).val();
       if (val !== '') {
@@ -35,8 +35,6 @@
           $group.show();
         }
       });
-
     });
-
   });
 })(document, window, jQuery);
