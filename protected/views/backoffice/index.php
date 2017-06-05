@@ -78,7 +78,7 @@
       
         <div class="" >
           <!-- Panel Projects Status -->
-          <div class="panel" id="projects-status">
+          <div class="panel" id="projects-status" style="width: 1024px">
             <div class="panel-heading">
               <h3 class="panel-title">
                 Technical Reports
@@ -89,34 +89,44 @@
               <table class="table table-striped">
                 <thead>
                   <tr>
-                    <td>หมายเลข</td>
-                    <td>หัวข้อ</td>
-                    <td>ผู้เขียน</td>
-                    <td class="text-left">สถานะ</td>
+                    <td>ID</td>
+                    <td>TOPIC</td>
+                    <td>Author</td>
+                    <td class="text-left">Status</td>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <td>20170101</td>
-                    <td>License Plate Recognition Using OpenCV</td>
+                    <td>Detecting Convoys Using License Plate Recognition Data</td>
                     <td>
-                      <span class="badge badge-primary">Developing</span>
+                        Somkheart Kraisin
+                    
                     </td>
                     <td>
-                      <span data-plugin="peityLine">5,3,2,-1,-3,-2,2,3,5,2</span>
+                     Published
                     </td>
                   </tr>
                   <tr>
                     <td>20170101</td>
-                    <td>Lunar probe project</td>
+                    <td>Human Detection Using Haar-Feature</td>
                     <td>
-                      <span class="badge badge-warning">Design</span>
+                      Roongtawan Laimek
                     </td>
                     <td>
-                      <span data-plugin="peityLine">1,-1,0,2,3,1,-1,1,4,2</span>
+                     published
                     </td>
                   </tr>
-                 
+                 <tr>
+                    <td>20170101</td>
+                    <td>Cluser Computer </td>
+                    <td>
+                      Nikom 
+                    </td>
+                    <td>
+                     published
+                    </td>
+                  </tr>
               
                 
                 </tbody>
