@@ -2,7 +2,7 @@
             <div style="width:800px; margin-left: 20%; margin-top: 5%" >
             <div class="row"></div>
             <div class="panel" style="padding: 100px">
-                <form autocomplete="off" action="research.php" method="post" >
+                <form autocomplete="off" action="backoffice" method="post" >
                 <div class="form-group form-material">
                     <label class="form-control-label" for="inputBasicEmail">รหัสเจ้าหน้าที่ </label>
                     <input type="number" class="form-control" id="inputBasicEmail" name="inputEmail" placeholder="รหัสเจ้าหน้าที่" autocomplete="off">
