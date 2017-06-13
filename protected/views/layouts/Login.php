@@ -65,7 +65,7 @@
         </div>
         <h3 class="font-size-24">เข้าสู่ระบบ</h3>
         <p>ยินดีต้อนรับเข้าสู่ ระบบจัดเก็บรายงานทางวิชาการ</p>
-        <form method="post" action="login-v2.html">
+        <form method="post" action="index.php/backoffice">
           <div class="form-group">
             <label class="sr-only" for="inputEmail">รหัสเจ้าหน้าที่</label>
             <input type="email" class="form-control" id="inputEmail" name="email" placeholder="รหัสเจ้าหน้าที่">
