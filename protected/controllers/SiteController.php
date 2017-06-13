@@ -42,10 +42,13 @@ class SiteController extends Controller
 		// using the default layout 'protected/views/layouts/main.php'
                 
                 $this->layout="login";
-		$this->render('index');
+		$this->render('main');
                 
 	}
-
+        public function actionLoginCheck()
+        {
+            
+        }
 	/**
 	 * This is the action to handle external exceptions.
 	 */

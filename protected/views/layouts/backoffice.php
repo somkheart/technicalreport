@@ -320,13 +320,13 @@
           <ul class="site-menu" data-plugin="menu">
             <li class="site-menu-category">ผู้อำนวยการฝ่าย</li>
             <li class="site-menu-item active">
-              <a class="animsition-link" href="#">
+              <a class="animsition-link" href="research">
                 <i class="site-menu-icon md-view-dashboard" aria-hidden="true"></i>
-                <span class="site-menu-title">งานวิจัยทั้งหมด</span>
+               <span class="site-menu-title">งานวิจัยทั้งหมด</span>
               </a>
             </li>
             <li class="site-menu-item has-sub">
-              <a href="javascript:void(0)">
+              <a href="unapproved">
                 <i class="site-menu-icon md-view-compact" aria-hidden="true"></i>
                 <span class="site-menu-title">รออนุมัติ</span>
                 
@@ -335,14 +335,14 @@
 
             <li class="site-menu-category">ผู้อำนวยการส่วนงาน</li>
             <li class="site-menu-item has-sub">
-              <a href="javascript:void(0)">
+              <a href="research">
                 <i class="site-menu-icon md-palette" aria-hidden="true"></i>
-                <span class="site-menu-title">งานวิจัยของส่วนงานทั้งหมด</span>
+                <span class="site-menu-title">งานวิจัยทั้งหมด</span>
                 <span class="site-menu-arrow"></span>
               </a>
             </li>
             <li class="site-menu-item has-sub">
-              <a href="javascript:void(0)">
+              <a href="unapproved">
                 <i class="site-menu-icon md-format-color-fill" aria-hidden="true"></i>
                 <span class="site-menu-title">รออนุมัติ</span>
       
@@ -351,9 +351,14 @@
             </li>
             <li class="site-menu-category">นักวิจัย</li>
             <li class="site-menu-item has-sub">
-              <a href="javascript:void(0)">
+              <a href="research">
                 <i class="site-menu-icon md-apps" aria-hidden="true"></i>
-                <span class="site-menu-title">งานวิจัย</span>
+                <span class="site-menu-title">งานวิจัยทั้งหมด</span>
+               
+              </a>
+                <a href="research">
+                <i class="site-menu-icon md-apps" aria-hidden="true"></i>
+                <span class="site-menu-title">งานวิจัยของฉัน</span>
                
               </a>
 
